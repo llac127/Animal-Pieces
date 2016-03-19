@@ -14,6 +14,7 @@
 		E589CE921C9C7B5C0087A617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E589CE901C9C7B5C0087A617 /* LaunchScreen.storyboard */; };
 		E589CE9D1C9C7B5C0087A617 /* Animal_PiecesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589CE9C1C9C7B5C0087A617 /* Animal_PiecesTests.swift */; };
 		E589CEA81C9C7B5C0087A617 /* Animal_PiecesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589CEA71C9C7B5C0087A617 /* Animal_PiecesUITests.swift */; };
+		E589CEB91C9C86D00087A617 /* PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589CEB81C9C86D00087A617 /* PlayVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E589CEA31C9C7B5C0087A617 /* Animal PiecesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Animal PiecesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E589CEA71C9C7B5C0087A617 /* Animal_PiecesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal_PiecesUITests.swift; sourceTree = "<group>"; };
 		E589CEA91C9C7B5C0087A617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E589CEB81C9C86D00087A617 /* PlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,10 @@
 		E589CE861C9C7B5C0087A617 /* Animal Pieces */ = {
 			isa = PBXGroup;
 			children = (
+				E589CEB71C9C86B30087A617 /* View */,
+				E589CEB61C9C86AC0087A617 /* Model */,
+				E589CEB51C9C869B0087A617 /* Controller */,
 				E589CE871C9C7B5C0087A617 /* AppDelegate.swift */,
-				E589CE891C9C7B5C0087A617 /* ViewController.swift */,
 				E589CE8B1C9C7B5C0087A617 /* Main.storyboard */,
 				E589CE8E1C9C7B5C0087A617 /* Assets.xcassets */,
 				E589CE901C9C7B5C0087A617 /* LaunchScreen.storyboard */,
@@ -123,6 +127,29 @@
 				E589CEA91C9C7B5C0087A617 /* Info.plist */,
 			);
 			path = "Animal PiecesUITests";
+			sourceTree = "<group>";
+		};
+		E589CEB51C9C869B0087A617 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E589CE891C9C7B5C0087A617 /* ViewController.swift */,
+				E589CEB81C9C86D00087A617 /* PlayVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E589CEB61C9C86AC0087A617 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E589CEB71C9C86B30087A617 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +288,7 @@
 			files = (
 				E589CE8A1C9C7B5C0087A617 /* ViewController.swift in Sources */,
 				E589CE881C9C7B5C0087A617 /* AppDelegate.swift in Sources */,
+				E589CEB91C9C86D00087A617 /* PlayVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

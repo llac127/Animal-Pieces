@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Animal_Pieces" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,103 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="Bde-cZ-hfR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Animal Pieces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqQ-vw-M6v">
+                                <rect key="frame" x="163" y="28" width="275" height="63"/>
+                                <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-L1-ahC">
+                                <rect key="frame" x="45" y="138" width="149" height="158"/>
+                                <state key="normal" title="Button" image="mario"/>
+                                <connections>
+                                    <segue destination="lag-VC-f3x" kind="show" identifier="PlayVC" id="aXx-DP-eVn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Bde-cZ-hfR" secondAttribute="bottom" id="MTr-q2-X7O"/>
+                            <constraint firstItem="xqQ-vw-M6v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vfb-mM-5Cy"/>
+                            <constraint firstAttribute="trailing" secondItem="Bde-cZ-hfR" secondAttribute="trailing" id="Ww7-Wp-sLa"/>
+                            <constraint firstItem="Bde-cZ-hfR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lva-qx-cXc"/>
+                            <constraint firstItem="xqQ-vw-M6v" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="q7O-tE-PaA"/>
+                            <constraint firstItem="Bde-cZ-hfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tlt-yJ-HmS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="StartMario" destination="FIf-L1-ahC" id="qZ5-8D-REq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="255" y="593"/>
+        </scene>
+        <!--PlayVC-->
+        <scene sceneID="GGr-G8-CVH">
+            <objects>
+                <viewController id="lag-VC-f3x" customClass="PlayVC" customModule="Animal_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="msw-Pj-qbc"/>
+                        <viewControllerLayoutGuide type="bottom" id="hmm-af-uCb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Lb-kH-bYY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="ZUs-eI-wgA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-Hx-BqP">
+                                <rect key="frame" x="20" y="20" width="128" height="41"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="lag-VC-f3x" eventType="touchUpInside" id="9hu-HV-mex"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHG-dc-cB0">
+                                <rect key="frame" x="227" y="110" width="147" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mario" translatesAutoresizingMaskIntoConstraints="NO" id="M0A-gM-fDc">
+                                <rect key="frame" x="190" y="262" width="240" height="128"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZUs-eI-wgA" secondAttribute="trailing" id="0R9-Jb-PeK"/>
+                            <constraint firstItem="ZUs-eI-wgA" firstAttribute="top" secondItem="7Lb-kH-bYY" secondAttribute="top" id="GWc-cM-UeE"/>
+                            <constraint firstItem="uHG-dc-cB0" firstAttribute="centerX" secondItem="7Lb-kH-bYY" secondAttribute="centerX" id="NA3-ph-HiT"/>
+                            <constraint firstItem="M0A-gM-fDc" firstAttribute="centerY" secondItem="7Lb-kH-bYY" secondAttribute="centerY" id="TAn-rE-47P"/>
+                            <constraint firstItem="hmm-af-uCb" firstAttribute="top" secondItem="ZUs-eI-wgA" secondAttribute="bottom" id="b9F-cL-M0b"/>
+                            <constraint firstItem="M0A-gM-fDc" firstAttribute="centerX" secondItem="7Lb-kH-bYY" secondAttribute="centerX" id="dJ0-2Z-zDL"/>
+                            <constraint firstItem="ZUs-eI-wgA" firstAttribute="leading" secondItem="7Lb-kH-bYY" secondAttribute="leading" id="vgn-dB-ANZ"/>
+                            <constraint firstItem="uHG-dc-cB0" firstAttribute="top" secondItem="msw-Pj-qbc" secondAttribute="bottom" constant="90" id="y51-tT-pHX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="marioImage" destination="M0A-gM-fDc" id="UqI-la-waC"/>
+                        <outlet property="nameLbl" destination="uHG-dc-cB0" id="T4F-mK-cdW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rE9-Lb-OGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="593"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg1" width="1024" height="896"/>
+        <image name="mario" width="193" height="261"/>
+    </resources>
 </document>
