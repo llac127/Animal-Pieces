@@ -9,16 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let cat = Animal(name: "CAT", body: "cat_body")
+    let dog = Animal(name: "DOG", body: "dog_body")
 
-    
-    @IBOutlet weak var StartMario: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        
+        let mariopart = ["Yoshi", "luigi" ]
+        mario.addParts(mariopart)
+    
     }
 
+    
+    @IBAction func catPressed(sender: UIButton) {
+        self.performSegueWithIdentifier("PlayVC", sender: cat)
+    }
+    @IBAction func dogPressed(sender: UIButton) {
+        self.performSegueWithIdentifier("PlayVC", sender: dog)
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
@@ -26,9 +37,11 @@ class ViewController: UIViewController {
         {
             if let playVC = segue.destinationViewController as? PlayVC
             {
-
-                playVC.toPlay = "MarioX"
-
+                //playVC.toPlay = mario.printname()
+                if let ani = sender as? Animal
+                {
+                    playVC.animal = ani 
+                }
             }
         }
     }

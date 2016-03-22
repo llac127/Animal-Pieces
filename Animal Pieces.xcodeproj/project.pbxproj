@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E561CB6B1C9F511E00AAB399 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E561CB6A1C9F511E00AAB399 /* Animal.swift */; };
 		E589CE881C9C7B5C0087A617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589CE871C9C7B5C0087A617 /* AppDelegate.swift */; };
 		E589CE8A1C9C7B5C0087A617 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589CE891C9C7B5C0087A617 /* ViewController.swift */; };
 		E589CE8D1C9C7B5C0087A617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E589CE8B1C9C7B5C0087A617 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E561CB6A1C9F511E00AAB399 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		E589CE841C9C7B5C0087A617 /* Animal Pieces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Animal Pieces.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E589CE871C9C7B5C0087A617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E589CE891C9C7B5C0087A617 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		E589CEB61C9C86AC0087A617 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E561CB6A1C9F511E00AAB399 /* Animal.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E589CE8A1C9C7B5C0087A617 /* ViewController.swift in Sources */,
+				E561CB6B1C9F511E00AAB399 /* Animal.swift in Sources */,
 				E589CE881C9C7B5C0087A617 /* AppDelegate.swift in Sources */,
 				E589CEB91C9C86D00087A617 /* PlayVC.swift in Sources */,
 			);
@@ -515,6 +519,7 @@
 				E589CEAE1C9C7B5C0087A617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E589CEAF1C9C7B5C0087A617 /* Build configuration list for PBXNativeTarget "Animal PiecesTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +528,7 @@
 				E589CEB11C9C7B5C0087A617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E589CEB21C9C7B5C0087A617 /* Build configuration list for PBXNativeTarget "Animal PiecesUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +537,7 @@
 				E589CEB41C9C7B5C0087A617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

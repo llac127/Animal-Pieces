@@ -26,11 +26,18 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-L1-ahC">
-                                <rect key="frame" x="45" y="138" width="149" height="158"/>
-                                <state key="normal" title="Button" image="mario"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2c-C3-eZh">
+                                <rect key="frame" x="35" y="336" width="159" height="129"/>
+                                <state key="normal" image="cat"/>
                                 <connections>
-                                    <segue destination="lag-VC-f3x" kind="show" identifier="PlayVC" id="aXx-DP-eVn"/>
+                                    <action selector="catPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8jJ-IA-ghL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPe-dJ-7EF">
+                                <rect key="frame" x="41" y="166" width="147" height="92"/>
+                                <state key="normal" title="Button" image="dog"/>
+                                <connections>
+                                    <action selector="dogPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cbl-4N-EBx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -44,9 +51,6 @@
                             <constraint firstItem="Bde-cZ-hfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tlt-yJ-HmS"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="StartMario" destination="FIf-L1-ahC" id="qZ5-8D-REq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,10 +87,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mario" translatesAutoresizingMaskIntoConstraints="NO" id="M0A-gM-fDc">
-                                <rect key="frame" x="190" y="262" width="240" height="128"/>
-                                <gestureRecognizers/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -94,15 +94,12 @@
                             <constraint firstAttribute="trailing" secondItem="ZUs-eI-wgA" secondAttribute="trailing" id="0R9-Jb-PeK"/>
                             <constraint firstItem="ZUs-eI-wgA" firstAttribute="top" secondItem="7Lb-kH-bYY" secondAttribute="top" id="GWc-cM-UeE"/>
                             <constraint firstItem="uHG-dc-cB0" firstAttribute="centerX" secondItem="7Lb-kH-bYY" secondAttribute="centerX" id="NA3-ph-HiT"/>
-                            <constraint firstItem="M0A-gM-fDc" firstAttribute="centerY" secondItem="7Lb-kH-bYY" secondAttribute="centerY" id="TAn-rE-47P"/>
                             <constraint firstItem="hmm-af-uCb" firstAttribute="top" secondItem="ZUs-eI-wgA" secondAttribute="bottom" id="b9F-cL-M0b"/>
-                            <constraint firstItem="M0A-gM-fDc" firstAttribute="centerX" secondItem="7Lb-kH-bYY" secondAttribute="centerX" id="dJ0-2Z-zDL"/>
                             <constraint firstItem="ZUs-eI-wgA" firstAttribute="leading" secondItem="7Lb-kH-bYY" secondAttribute="leading" id="vgn-dB-ANZ"/>
                             <constraint firstItem="uHG-dc-cB0" firstAttribute="top" secondItem="msw-Pj-qbc" secondAttribute="bottom" constant="90" id="y51-tT-pHX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="marioImage" destination="M0A-gM-fDc" id="UqI-la-waC"/>
                         <outlet property="nameLbl" destination="uHG-dc-cB0" id="T4F-mK-cdW"/>
                     </connections>
                 </viewController>
@@ -113,6 +110,7 @@
     </scenes>
     <resources>
         <image name="bg1" width="1024" height="896"/>
-        <image name="mario" width="193" height="261"/>
+        <image name="cat" width="954" height="772"/>
+        <image name="dog" width="1126" height="734"/>
     </resources>
 </document>
