@@ -34,4 +34,9 @@ class Animal
         return self.name
     }
     
+    var printBody: String
+    {
+        return body
+    }
+    
 }
