@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -74,8 +75,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="ZUs-eI-wgA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-Hx-BqP">
-                                <rect key="frame" x="20" y="20" width="128" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-Hx-BqP">
+                                <rect key="frame" x="20" y="20" width="64" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,10 +90,18 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ZUs-eI-wgA" secondAttribute="trailing" id="0R9-Jb-PeK"/>
+                            <constraint firstItem="P0u-Hx-BqP" firstAttribute="leading" secondItem="7Lb-kH-bYY" secondAttribute="leading" id="Dwt-0c-QGl"/>
                             <constraint firstItem="ZUs-eI-wgA" firstAttribute="top" secondItem="7Lb-kH-bYY" secondAttribute="top" id="GWc-cM-UeE"/>
+                            <constraint firstItem="P0u-Hx-BqP" firstAttribute="top" secondItem="msw-Pj-qbc" secondAttribute="bottom" id="aOx-0m-JaW"/>
                             <constraint firstItem="hmm-af-uCb" firstAttribute="top" secondItem="ZUs-eI-wgA" secondAttribute="bottom" id="b9F-cL-M0b"/>
+                            <constraint firstItem="P0u-Hx-BqP" firstAttribute="leading" secondItem="7Lb-kH-bYY" secondAttribute="leadingMargin" id="sG6-9L-WzF"/>
                             <constraint firstItem="ZUs-eI-wgA" firstAttribute="leading" secondItem="7Lb-kH-bYY" secondAttribute="leading" id="vgn-dB-ANZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Dwt-0c-QGl"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rE9-Lb-OGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

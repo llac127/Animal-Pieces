@@ -1,0 +1,1 @@
+../../../DrawingLabel/DrawingLabelExamples/Classes/DrawingStroke.h

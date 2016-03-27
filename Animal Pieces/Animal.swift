@@ -39,4 +39,9 @@ class Animal
         return body
     }
     
+    func getParts() -> [String]
+    {
+        return parts!
+    }
+    
 }

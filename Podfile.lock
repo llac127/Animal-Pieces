@@ -1,0 +1,10 @@
+PODS:
+  - DrawingLabel (1.0)
+
+DEPENDENCIES:
+  - DrawingLabel
+
+SPEC CHECKSUMS:
+  DrawingLabel: 7ecd79c9675db8b74071239f09ed15af0978c527
+
+COCOAPODS: 0.39.0

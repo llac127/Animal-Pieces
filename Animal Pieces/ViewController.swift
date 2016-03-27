@@ -11,16 +11,17 @@ import UIKit
 class ViewController: UIViewController {
     
     let cat = Animal(name: "CAT", body: "cat_body")
-    let dog = Animal(name: "MONKEY", body: "dog_body")
+    let dog = Animal(name: "DOG", body: "dog_body")
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-       // let mariopart = ["Yoshi", "luigi" ]
-       // mario.addParts(mariopart)
-    
+    let dogpart = ["dog_tail", "dog_left_ear", "dog_right_ear", "dog_mouth", "dog_eyes", "dog_nose", "dog_tongue", "dog_hair" ]
+       dog.addParts(dogpart)
+    let catpart = ["cat_left_ear", "cat_right_ear", "cat_tail", "cat_mouth", "cat_eyes", "cat_nose", "cat_whiskers"]
+        cat.addParts(catpart)
     }
 
     

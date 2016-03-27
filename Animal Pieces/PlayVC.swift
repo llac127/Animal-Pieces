@@ -14,7 +14,6 @@ class PlayVC: UIViewController
     
     var toPlay: String!
     var animal: Animal!
-   // var block = [UIView]()
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     struct Letter
     {
@@ -27,8 +26,8 @@ class PlayVC: UIViewController
     {
         var blockView = UIView()
         var actuallyChar: String!
+        var filled = false
     }
-    
     
     var letters = [Letter]()
     var blockSet = [BlockSet]()
@@ -37,85 +36,17 @@ class PlayVC: UIViewController
     var marioImage = UIImageView()
     var imageView = UIImageView()
     var bodyImage = UIImageView()
+    var bodyParts = [UIImageView]()
     
-    
-    let pinchRec = UIPinchGestureRecognizer()
-    let rotateRec = UIRotationGestureRecognizer()
-    let panRec = UIPanGestureRecognizer()
-    let marioRec = UIPanGestureRecognizer()
-    let yoshiPinch = UIPinchGestureRecognizer()
-    let rotateYoshi = UIRotationGestureRecognizer()
-    let Apan = UIPanGestureRecognizer()
+    //let rotateRec = UIRotationGestureRecognizer()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         addBody()
         addCharacterBlocks()
-        
-        /*
-        aLetter.text = "Test"
-        aLetter.font = aLetter.font.fontWithSize(50)
-        aLetter.center = CGPointMake(160, 284)
-        view.addSubview(aLetter)*/
-        
-        pinchRec.addTarget(self, action: "scaleImage:")
-        rotateRec.addTarget(self, action: "rotatedView:")
-        panRec.addTarget(self, action: "handlePan:")
-        marioRec.addTarget(self, action: "handlePan:")
-        yoshiPinch.addTarget(self, action: "scaleImage:")
-        rotateYoshi.addTarget(self, action: "rotatedView:")
-        Apan.addTarget(self, action: "handlePan:")
-        
-        //aLetter.userInteractionEnabled = true
-        //aLetter.addGestureRecognizer(Apan)
-        
-        marioImage.image = UIImage(named: "mario")
-        marioImage.userInteractionEnabled = true
-        marioImage.multipleTouchEnabled = true
-
-        marioImage.frame = CGRect(x: randomX(), y: randomY(), width: 193, height: 261)
-        view.addSubview(marioImage)
-        
-        marioImage.addGestureRecognizer(pinchRec)
-        marioImage.addGestureRecognizer(rotateRec)
-        marioImage.addGestureRecognizer(marioRec)
-        
-        
-        imageView.image = UIImage(named: "Yoshi")
-        imageView.userInteractionEnabled = true
-        imageView.multipleTouchEnabled = true
-        
-        imageView.frame = CGRect(x: randomX(), y: randomY(), width: 125, height: 182)
-        //imageView.frame = CGRect()
-        //imageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(imageView)
-        
-        imageView.addGestureRecognizer(panRec)
-        imageView.addGestureRecognizer(rotateYoshi)
-        imageView.addGestureRecognizer(yoshiPinch)
-        
-        //imageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        //imageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        
-        //let horizontalConstraint = imageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
-        //let verticalConstraint = imageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor)
-       // let widthConstraint = imageView.widthAnchor.constraintEqualToAnchor(nil, constant: 100)
-       // let heightConstraint = imageView.heightAnchor.constraintEqualToAnchor(nil, constant: 100)
-       // NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint])
-        
-        /*
-        let horizontalConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-        view.addConstraint(horizontalConstraint)
-        
-        let verticalConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-        view.addConstraint(verticalConstraint)
-    */
-        
-        
-       // print(screenSize.width)
-       // print(screenSize.height)
+        addParts()
       
         
     }
@@ -135,31 +66,24 @@ class PlayVC: UIViewController
         
         let stackView   = UIStackView()
         stackView.axis  = UILayoutConstraintAxis.Horizontal
-        stackView.distribution  = UIStackViewDistribution.EqualSpacing
+        stackView.distribution  = UIStackViewDistribution.FillEqually
         stackView.alignment = UIStackViewAlignment.Center
-        stackView.spacing   = 30
+        stackView.spacing   = 15
         
         for i in 0..<animal.printname().characters.count
         {
             
             var tempBlockSet = BlockSet()
-            tempBlockSet.blockView.backgroundColor = UIColor.grayColor()
+            tempBlockSet.blockView.backgroundColor = UIColor.greenColor()
+            tempBlockSet.blockView.alpha = 0.2
             tempBlockSet.blockView.layer.cornerRadius=3
-            tempBlockSet.blockView.layer.borderWidth=2
+            tempBlockSet.blockView.layer.borderWidth=1
             tempBlockSet.blockView.heightAnchor.constraintEqualToConstant(blockwidth).active = true
             tempBlockSet.blockView.widthAnchor.constraintEqualToConstant(blockwidth).active = true
             
             let tempname = animal.printname()
             let counter = tempname.startIndex.advancedBy(i)
             tempBlockSet.actuallyChar = String(tempname[counter])
-            //print("Setting Block char to: \(tempBlockSet.actuallyChar)")
-            
-            /*let tempblock = UIView()
-            tempblock.backgroundColor=UIColor.grayColor()
-            tempblock.layer.cornerRadius=3
-            tempblock.layer.borderWidth=2
-            tempblock.heightAnchor.constraintEqualToConstant(blockwidth).active = true
-            tempblock.widthAnchor.constraintEqualToConstant(blockwidth).active = true*/
             
             blockSet.append(tempBlockSet)
             stackView.addArrangedSubview(tempBlockSet.blockView)
@@ -172,7 +96,7 @@ class PlayVC: UIViewController
         //Constraints
         stackView.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
         //stackView.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
-        let pinTop = NSLayoutConstraint(item: stackView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 100)
+        let pinTop = NSLayoutConstraint(item: stackView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: screenSize.height * 0.10)
         NSLayoutConstraint.activateConstraints([pinTop])
         
         
@@ -183,15 +107,23 @@ class PlayVC: UIViewController
 
             
             let tempLabel = UILabel(frame: CGRectMake(CGFloat(randomX()), CGFloat(randomY()), 100, 100))
-            
             tempLabel.text = String(character)
-            tempLabel.font = tempLabel.font.fontWithSize(50)
+            //tempLabel.font = tempLabel.font.fontWithSize(CGFloat(screenSize.width * 0.06))
+            //tempLabel.font = UIFont(name: "Chalkboard SE", size: screenSize.width * 0.08)
+            let myAttribute = [ NSFontAttributeName: UIFont(name: "GillSans-Bold", size: screenSize.width * 0.08)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+            
+            let myString = NSMutableAttributedString(string: String(character), attributes: myAttribute )
+            
+            myString.addAttribute(NSStrokeColorAttributeName, value: UIColor.blueColor(), range:  NSRange(location: 0, length: 1))
+            myString.addAttribute(NSStrokeWidthAttributeName, value: -3, range: NSRange(location: 0, length: 1))
+            
+            tempLabel.attributedText = myString
             view.addSubview(tempLabel)
             let tempLetter = Letter(letter: String(character), letterLbl: tempLabel)
             
             tempLetter.letterLbl.userInteractionEnabled = true
             tempLetter.letterLbl.addGestureRecognizer(tempLetter.letterPanRecognizer)
-            tempLetter.letterPanRecognizer.addTarget(self, action: "panLetter:")
+            tempLetter.letterPanRecognizer.addTarget(self, action: #selector(PlayVC.panLetter(_:)))
             letters.append(tempLetter)
             
             index += 1
@@ -200,7 +132,38 @@ class PlayVC: UIViewController
 
     }
     
-    
+    func addParts()
+    {
+        for parts in animal.getParts()
+        {
+            //print(parts)
+            
+            let tempPart:UIImageView = UIImageView()
+            tempPart.image = UIImage(named: parts)
+            tempPart.frame = CGRect(x: randomX(), y: randomY(), width: 100, height: 100)
+            tempPart.contentMode = UIViewContentMode.ScaleAspectFit
+            //tempPart.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(tempPart)
+            bodyParts.append(tempPart)
+            
+            let panParts = UIPanGestureRecognizer()
+            let pinchParts = UIPinchGestureRecognizer()
+            let rotateParts = UIRotationGestureRecognizer()
+            
+            panParts.addTarget(self, action: #selector(PlayVC.handlePan(_:)))
+            pinchParts.addTarget(self, action: #selector(PlayVC.scaleImage(_:)))
+            rotateParts.addTarget(self, action: #selector(PlayVC.rotatedView(_:)))
+
+            
+            tempPart.userInteractionEnabled = true
+            tempPart.multipleTouchEnabled = true
+            
+            tempPart.addGestureRecognizer(panParts)
+            tempPart.addGestureRecognizer(pinchParts)
+            //tempPart.addGestureRecognizer(rotateParts)
+            
+        }
+    }
     func addBody()
     {
         //print(animal.printBody)
@@ -238,6 +201,11 @@ class PlayVC: UIViewController
     }
     
     func panLetter(recognizer:UIPanGestureRecognizer) {
+        if let bringtofront: UILabel = (recognizer.view as? UILabel)!
+        {
+            self.view.bringSubviewToFront(bringtofront)
+        }
+        
         let translation = recognizer.translationInView(self.view)
         if let view = recognizer.view {
             view.center = CGPoint(x:view.center.x + translation.x,
@@ -257,15 +225,16 @@ class PlayVC: UIViewController
             let temp: UILabel = (recognizer.view as? UILabel)!
             //print("Grabbing Text: \(temp.text!)")
             
+            var i = 0
             for testblock in blockSet
             {
                 let tempframe = testblock.blockView.superview?.convertRect(testblock.blockView.frame, toView: nil )
-                //print("Blocks arrays: \(testblock.blockView.frame)")
-                //print("Blocks arrays: \(tempframe)")
+                //print("Blocks color: \(testblock.blockView.backgroundColor)")
+                //print("Filled? : \(testblock.filled)")
                 //aView.superview?.convertPoint(aView.frame.origin, toView: nil)
                 if CGRectContainsPoint(tempframe!, endedPoint)
                 {
-                    if temp.text == testblock.actuallyChar
+                    if temp.text == testblock.actuallyChar && !testblock.filled
                     {
                         //print("Correct Match!")
                         temp.userInteractionEnabled = false
@@ -274,11 +243,14 @@ class PlayVC: UIViewController
                         //bodyImage.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
                         temp.centerXAnchor.constraintEqualToAnchor(testblock.blockView.centerXAnchor).active = true
                         temp.centerYAnchor.constraintEqualToAnchor(testblock.blockView.centerYAnchor).active = true
+                        testblock.blockView.backgroundColor = UIColor.yellowColor()
+                        testblock.blockView.alpha = 0.9
+                        testblock.blockView.layer.borderColor = UIColor(red:0/255.0, green:225/255.0, blue:0/255.0, alpha: 0.5).CGColor
+                        blockSet[i].filled = true
                     }
                 }
+                i += 1
             }
-
-
             
         }
     }
@@ -291,22 +263,12 @@ class PlayVC: UIViewController
             lastRotation = 0.0;
         }
         let rotation = 0.0 - (lastRotation - sender.rotation)
-        rotateRec.locationInView(sender.view)
+        sender.locationInView(sender.view)
         let currentTrans = sender.view!.transform
         let newTrans = CGAffineTransformRotate(currentTrans, rotation)
         sender.view!.transform = newTrans
         lastRotation = sender.rotation
     }
     
-    
-    func draggedView(sender:UIPanGestureRecognizer){
-        self.view.bringSubviewToFront(sender.view!)
-        let translation = sender.translationInView(self.view)
-        sender.view!.center = CGPointMake(sender.view!.center.x + translation.x, sender.view!.center.y + translation.y)
-        sender.setTranslation(CGPointZero, inView: self.view)
-    }
-    
-
-
 
 }

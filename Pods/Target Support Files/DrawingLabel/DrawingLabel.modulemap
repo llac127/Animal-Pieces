@@ -1,0 +1,6 @@
+framework module DrawingLabel {
+  umbrella header "DrawingLabel-umbrella.h"
+
+  export *
+  module * { export * }
+}
