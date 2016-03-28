@@ -11,10 +11,13 @@ import Foundation
 
 class PlayVC: UIViewController
 {
-    
+    let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+
     var toPlay: String!
     var animal: Animal!
     let screenSize: CGRect = UIScreen.mainScreen().bounds
+    
+    
     struct Letter
     {
         var letter: String
@@ -44,11 +47,16 @@ class PlayVC: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addBody()
-        addCharacterBlocks()
-        addParts()
-      
+        backgroundImage.image = UIImage(named: "bg1")
+        self.view.insertSubview(backgroundImage, atIndex: 0)
+        backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
         
+        addBody()
+        
+        addParts()
+        addCharacterBlocks()
+      
+        print(screenSize)
     }
     
     func randomX() -> Int
@@ -106,7 +114,7 @@ class PlayVC: UIViewController
             //print(character)
 
             
-            let tempLabel = UILabel(frame: CGRectMake(CGFloat(randomX()), CGFloat(randomY()), 100, 100))
+            let tempLabel = UILabel(frame: CGRectMake(CGFloat(randomX()), CGFloat(randomY()), 60, 60))
             tempLabel.text = String(character)
             //tempLabel.font = tempLabel.font.fontWithSize(CGFloat(screenSize.width * 0.06))
             //tempLabel.font = UIFont(name: "Chalkboard SE", size: screenSize.width * 0.08)
@@ -134,16 +142,32 @@ class PlayVC: UIViewController
     
     func addParts()
     {
+        var partSize = 100
+        if screenSize.height == 1024.0
+        {
+            partSize = 200
+        }
+        
+        var index = 1
         for parts in animal.getParts()
         {
             //print(parts)
             
+            if index == 4
+            {
+                index += 1
+                view.bringSubviewToFront(bodyImage)
+            }
+            
             let tempPart:UIImageView = UIImageView()
             tempPart.image = UIImage(named: parts)
-            tempPart.frame = CGRect(x: randomX(), y: randomY(), width: 100, height: 100)
+            tempPart.frame = CGRect(x: randomX(), y: randomY(), width: partSize , height: partSize)
             tempPart.contentMode = UIViewContentMode.ScaleAspectFit
             //tempPart.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(tempPart)
+            //view.addSubview(tempPart)
+            //print("index: \(index)")
+            view.insertSubview(tempPart, atIndex: index)
+            view.bringSubviewToFront(tempPart)
             bodyParts.append(tempPart)
             
             let panParts = UIPanGestureRecognizer()
@@ -162,19 +186,32 @@ class PlayVC: UIViewController
             tempPart.addGestureRecognizer(pinchParts)
             //tempPart.addGestureRecognizer(rotateParts)
             
+            index += 1
+            
         }
     }
     func addBody()
     {
         //print(animal.printBody)
+        let bodyPadding = screenSize.height * 0.10
+        
         bodyImage.image = UIImage(named: animal.printBody )
         bodyImage.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bodyImage)
+    
+        view.insertSubview(bodyImage, atIndex: 4)
         bodyImage.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        bodyImage.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        if screenSize.height != 1024.0
+        {
+            bodyImage.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        }
+        else
+        {
+            let verticalContraints = NSLayoutConstraint(item: bodyImage, attribute: .Bottom , relatedBy: .Equal, toItem: view,  attribute: .Bottom, multiplier: 1.0, constant: 100)
+             NSLayoutConstraint.activateConstraints([verticalContraints])
+        }
         bodyImage.contentMode = UIViewContentMode.ScaleAspectFit
-        let horizonalContraints = NSLayoutConstraint(item: bodyImage , attribute: .LeadingMargin, relatedBy: .Equal, toItem: view, attribute: .LeadingMargin, multiplier: 1.0, constant: 40)
-        let horizonal2Contraints = NSLayoutConstraint(item: bodyImage, attribute: .TrailingMargin, relatedBy: .Equal, toItem: view,  attribute: .TrailingMargin, multiplier: 1.0, constant: -40)
+        let horizonalContraints = NSLayoutConstraint(item: bodyImage , attribute: .LeadingMargin, relatedBy: .Equal, toItem: view, attribute: .LeadingMargin, multiplier: 1.0, constant: bodyPadding)
+        let horizonal2Contraints = NSLayoutConstraint(item: bodyImage, attribute: .TrailingMargin, relatedBy: .Equal, toItem: view,  attribute: .TrailingMargin, multiplier: 1.0, constant: -bodyPadding)
         let pinTop = NSLayoutConstraint(item: bodyImage, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 100)
         NSLayoutConstraint.activateConstraints([horizonalContraints, horizonal2Contraints, pinTop])
     }
